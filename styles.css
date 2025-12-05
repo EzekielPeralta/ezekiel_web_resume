@@ -1,0 +1,398 @@
+/* =========================================================
+   THE COMPLETE MODERN DARK THEME CSS
+   FOR EZEKIEL KAYL G. PERALTA – WEB RESUME
+   ========================================================= */
+
+/* ===== DESIGN TOKENS ===== */
+:root{
+  --bg: #0b0f14;
+  --panel: #0f1720;
+  --muted: #9aa6b2;
+  --neon: #00b0ff;
+  --neon-2: #4fd1ff;
+  --glass: rgba(255,255,255,0.03);
+  --accent-glow: 0 12px 40px rgba(0,176,255,0.12);
+  --radius: 14px;
+  --maxwidth: 1200px;
+  --container-pad: 24px;
+  --ease: cubic-bezier(.2,.9,.2,1);
+}
+
+/* ===== GLOBAL ===== */
+*{box-sizing:border-box;}
+html,body{height:100%;}
+body{
+  margin:0;
+  font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;
+  background:linear-gradient(180deg,var(--bg),#06080a 140%);
+  color:#e6eef6;
+  -webkit-font-smoothing:antialiased;
+  line-height:1.5;
+  overflow-x:hidden;
+}
+
+.container{
+  max-width:var(--maxwidth);
+  margin:0 auto;
+  padding:0 var(--container-pad);
+}
+
+/* ===== Skip link ===== */
+.skip-link{
+  position:absolute;
+  left:-999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.skip-link:focus{
+  position:static;
+  padding:8px;
+  width:auto;
+  height:auto;
+  background:#fff;
+  color:#000;
+  margin:8px;
+  border-radius:6px;
+}
+
+/* ===== HEADER ===== */
+.site-header{
+  position:fixed;
+  top:12px;
+  left:0; right:0;
+  z-index:60;
+}
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:6px 0;
+}
+.brand{
+  color:var(--neon-2);
+  font-weight:700;
+  text-decoration:none;
+}
+.main-nav a{
+  color:var(--muted);
+  text-decoration:none;
+  margin-left:18px;
+  font-size:14px;
+  transition:color .18s var(--ease);
+}
+.main-nav a:hover,
+.main-nav a:focus{
+  color:var(--neon);
+}
+
+/* =========================================================
+   HERO SECTION — FIXED VERSION
+   ========================================================= */
+
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  padding:48px 0;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-grid{
+  display:grid;
+  /* FIXED column sizing so image isn’t tiny */
+  grid-template-columns: clamp(360px, 40%, 48%) 1fr;
+  gap:36px;
+  align-items:center;
+}
+
+/* portrait container */
+.hero-portrait{
+  height: calc(100vh - 120px); /* FIXED */
+  min-height: 420px;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:var(--accent-glow);
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+}
+.hero-portrait img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transform-origin:center center;
+  transition:transform .7s var(--ease);
+}
+.hero-portrait:hover img{
+  transform:scale(1.03);
+}
+
+/* Right side text */
+.hero-content{
+  padding:28px 18px;
+  max-width: 64ch;
+}
+
+.hero-name{
+  font-size: clamp(28px, 6.2vw, 56px); /* FIXED */
+  margin:0 0 6px 0;
+  line-height:1.05;
+  letter-spacing:0.3px;
+  text-shadow:0 6px 30px rgba(0,176,255,0.06);
+}
+
+.hero-title{
+  color:var(--muted);
+  margin:0 0 18px 0;
+  font-weight:600;
+}
+
+.hero-intro{
+  color:#cbd7e6;
+  margin-bottom:18px;
+  max-width:48ch;
+}
+
+.keyword-row{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  color:var(--muted);
+  font-weight:600;
+}
+.typed{
+  color:var(--neon-2);
+  font-weight:700;
+}
+
+/* CTAs */
+.hero-ctas{
+  margin-top:22px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+.btn{
+  padding:12px 18px;
+  border-radius:10px;
+  text-decoration:none;
+  display:inline-block;
+  font-weight:700;
+  letter-spacing:0.2px;
+  transition:transform .18s var(--ease), box-shadow .18s var(--ease);
+}
+.btn-primary{
+  background:linear-gradient(90deg,var(--neon),var(--neon-2));
+  box-shadow:var(--accent-glow);
+  color:#06101a;
+}
+.btn-primary:hover,
+.btn-primary:focus{
+  transform:translateY(-4px);
+  box-shadow:0 20px 60px rgba(0,176,255,0.22);
+}
+.btn-ghost{
+  border:1px solid rgba(255,255,255,0.06);
+  color:var(--neon);
+  background:transparent;
+}
+.btn-ghost:hover{
+  transform:translateY(-4px);
+  background:rgba(255,255,255,0.02);
+}
+
+/* Metrics */
+.hero-metrics{
+  display:flex;
+  gap:18px;
+  flex-wrap:wrap;
+  margin-top:18px;
+}
+.metric{
+  background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+  padding:10px 14px;
+  border-radius:10px;
+  min-width:120px;
+  text-align:center;
+}
+.metric .num{
+  font-size:20px;
+  font-weight:800;
+  color:var(--neon-2);
+}
+.metric .meta{
+  font-size:12px;
+  color:var(--muted);
+}
+
+/* Particles canvas */
+.particles{
+  position:absolute;
+  inset:0;
+  z-index:-1;
+}
+
+/* =========================================================
+   PANELS
+   ========================================================= */
+
+.panel{
+  padding:64px 0;
+  background:linear-gradient(180deg, rgba(255,255,255,0.015), transparent);
+  border-top:1px solid rgba(255,255,255,0.02);
+}
+.lead{
+  color:#cbd7e6;
+  font-size:16px;
+}
+
+/* Two-column layout */
+.two-col{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:36px;
+}
+
+/* Job Cards */
+.job-card{
+  background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.006));
+  padding:20px;
+  border-radius:12px;
+  margin-bottom:18px;
+  box-shadow:0 6px 24px rgba(2,6,23,0.6);
+  transition:transform .18s var(--ease);
+}
+.job-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 24px 60px rgba(0,176,255,0.06);
+}
+.job-card .meta{color:var(--muted);}
+
+/* Projects grid */
+.projects-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:16px;
+}
+.project-card{
+  padding:18px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.02);
+  transition:transform .18s var(--ease);
+}
+.project-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--accent-glow);
+}
+
+/* Skills */
+.skills-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+  list-style:none;
+  padding:0;
+  margin:8px 0;
+}
+.chips li{
+  background:rgba(255,255,255,0.02);
+  padding:8px 12px;
+  border-radius:999px;
+  font-weight:600;
+  color:var(--muted);
+}
+
+/* Attributes */
+.attributes{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  list-style:none;
+  padding:0;
+  margin-top:8px;
+}
+.attributes li{
+  background:rgba(255,255,255,0.02);
+  padding:8px 12px;
+  border-radius:8px;
+  color:var(--muted);
+}
+
+/* Certifications */
+.cert-list{
+  list-style:none;
+  padding:0;
+  margin:8px 0;
+}
+.cert-list li{
+  margin-bottom:6px;
+}
+
+/* Contact grid */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+}
+
+/* Footer */
+.site-footer{
+  padding:18px 0;
+  text-align:center;
+  color:var(--muted);
+  border-top:1px solid rgba(255,255,255,0.02);
+}
+
+/* =========================================================
+   RESPONSIVE FIXES
+   ========================================================= */
+@media (max-width: 1000px){
+  .projects-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+@media (max-width: 900px){
+  .hero-grid{
+    grid-template-columns:1fr;
+    gap:18px;
+  }
+  .hero-portrait{
+    height:52vw;
+    min-height:320px;
+  }
+  .hero-name{
+    font-size:32px;
+  }
+  .hero-content{
+    max-width:100%;
+  }
+}
+
+@media (max-width:700px){
+  .projects-grid{
+    grid-template-columns:1fr;
+  }
+  .two-col{
+    grid-template-columns:1fr;
+  }
+  .contact-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .hero-portrait:hover img{
+    transform:none;
+  }
+}
